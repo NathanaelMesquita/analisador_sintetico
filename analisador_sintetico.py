@@ -100,5 +100,14 @@ if st.button("Gerar Análise"):
         # Salvar o arquivo com ajustes finais
         wb.save(output_file)
         st.success(f"Análise gerada com sucesso! Arquivo salvo em: {output_file}")
+
+        # Adicionar botão de download
+        with open(output_file, "rb") as f:
+            st.download_button(
+                label="Baixar Análise Sintética",
+                data=f,
+                file_name="análises_sintéticas.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
     else:
         st.error("Por favor, carregue os arquivos necessários antes de gerar a análise.")
