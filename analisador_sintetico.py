@@ -12,7 +12,7 @@ def create_excel_report(file1, file2):
     output = BytesIO()
     
     # Cria um objeto ExcelWriter para salvar múltiplas sheets no arquivo
-    with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
+    with pd.ExcelWriter(output, engine="openpyxl") as writer:
         # Itera sobre as sheets dos dois arquivos e adiciona ao writer
         for idx, excel_file in enumerate([excel_file1, excel_file2], start=1):
             for sheet_name in excel_file.sheet_names:
@@ -20,7 +20,6 @@ def create_excel_report(file1, file2):
                 df = excel_file.parse(sheet_name)
 
                 # Escreve cada DataFrame como uma nova sheet no arquivo Excel
-                writer.sheet_names = excel_file.sheet_names
                 sheet_title = f"{sheet_name}_file{idx}"
                 df.to_excel(writer, sheet_name=sheet_title, index=False)
 
