@@ -30,7 +30,7 @@ principais_envolvidos = st.file_uploader("Carregue o arquivo 'Principais Envolvi
 informacoes_adicionais = st.file_uploader("Carregue o arquivo 'InformacoesAdicionais.xlsx'", type="xlsx")
 
 # Aviso sobre o local do arquivo de saída
-st.info("Obs.: Será gerado um arquivo chamado análises_sintéticas.xlsx na mesma pasta onde o script está localizado.")
+#st.info("Obs.: Será gerado um arquivo chamado análises_sintéticas.xlsx na mesma pasta onde o script está localizado.")
 
 # Caminho do arquivo de saída
 output_file = os.path.join(os.getcwd(), "análises_sintéticas.xlsx")
