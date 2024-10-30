@@ -85,8 +85,8 @@ if st.button("Gerar Análise"):
                     for cell in column_cells:
                         try:
                             max_length = max(max_length, len(str(cell.value)))
-                        except:
-                            pass
+                        except Exception as e:
+                            st.error(f"Erro ao ajustar largura da coluna: {e}")
                     adjusted_width = (max_length + 2) * 1.1
                     sheet.column_dimensions[column_letter].width = adjusted_width
 
