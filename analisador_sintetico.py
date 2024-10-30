@@ -42,8 +42,14 @@ if st.button("Gerar Análise"):
             informacoes_adicionais_df = pd.read_excel(informacoes_adicionais, engine="openpyxl")
             envolvidos = principais_envolvidos_df.iloc[:, 0].dropna().tolist()  # Lista de envolvidos
 
-            # Criar um novo arquivo de saída, sobrescrevendo se necessário
-            with pd.ExcelWriter(output_file, engine="openpyxl") as writer:
+            # Criar um novo arquivo de saída, caso não exista
+            if not os.path.exists(output_file):
+                # Cria um arquivo Excel vazio
+                with pd.ExcelWriter(output_file, engine="openpyxl") as writer:
+                    pass  # Cria o arquivo sem nada
+
+            # Abrir o ExcelWriter em modo de adição
+            with pd.ExcelWriter(output_file, engine="openpyxl", mode="a") as writer:
                 for envolvido_cpf_cnpj in envolvidos:
                     safe_cpf_cnpj = re.sub(r'[\/:*?"<>|]', "_", str(envolvido_cpf_cnpj))
                     remetente_sheet_name = f"{safe_cpf_cnpj}_REMETENTE"
