@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import os
-from openpyxl import Workbook, load_workbook
 import re
 
 # Configurações iniciais da página
@@ -12,7 +11,6 @@ caminho_base = os.path.dirname(__file__)
 logo_esquerda = os.path.join(caminho_base, "logo_esquerda.png")
 logo_direita = os.path.join(caminho_base, "logo_direita.png")
 
-# Adiciona logotipo redimensionado e posiciona acima do título
 col1, _, col2 = st.columns([1, 5, 1])
 
 with col1:
